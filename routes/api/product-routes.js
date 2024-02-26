@@ -8,13 +8,13 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // be sure to include its associated Category and Tag data
 router.get('/', async (req, res) => {
   try {
-    //makes it wait until you find all the category data to avoid errors 
+    // makes it wait until you find all the category data to avoid errors 
     const productData = await Product.findAll({
       include: [Category, Tag]
     });
     res.status(200).json(productData);
   } catch (err) {
-    //allows you to see error in terminal instead of just the number
+    // allows you to see error in terminal instead of just the number
     console.log(err);
     res.status(500).json(err);
   }

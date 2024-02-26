@@ -7,13 +7,13 @@ const { Tag, Product, ProductTag } = require('../../models');
   // be sure to include its associated Product data
 router.get('/', async (req, res) => {
   try {
-    //makes it wait until you find all the category data to avoid errors 
+    // makes it wait until you find all the category data to avoid errors 
     const tagData = await Tag.findAll({
       include: [ Product ]
     });
     res.status(200).json(tagData);
   } catch (err) {
-    //allows you to see error in terminal instead of just the number
+    // allows you to see error in terminal instead of just the number
     console.log(err);
     res.status(500).json(err);
   }
@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
     });
     res.status(200).json(tagData);
   } catch (err) {
-     //allows you to see error in terminal instead of just the number
+     // allows you to see error in terminal instead of just the number
      console.log(err);
      res.status(500).json(err);
   }
@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
     })
     res.status(200).json(tagData);
   } catch (err) {
-     //allows you to see error in terminal instead of just the number
+     // allows you to see error in terminal instead of just the number
      console.log(err);
      res.status(500).json(err);
   }
@@ -52,7 +52,7 @@ router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
 });
 
-//delete tag by id
+// delete tag by id
 router.delete('/:id', async (req, res) => {
   try {
     const tagData = await Tag.destroy({

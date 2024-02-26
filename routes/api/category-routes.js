@@ -7,19 +7,19 @@ const { Category, Product } = require('../../models');
   // be sure to include its associated Products
 router.get('/', async (req, res) => {
   try {
-    //makes it wait until you find all the category data to avoid errors 
+    // makes it wait until you find all the category data to avoid errors 
     const categoryData = await Category.findAll({
       include: [ Product ]
     });
     res.status(200).json(categoryData);
   } catch (err) {
-    //allows you to see error in terminal instead of just the number
+    // allows you to see error in terminal instead of just the number
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-//colon means params
+// colon means params
 router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
     });
     res.status(200).json(categoryData);
   } catch (err) {
-     //allows you to see error in terminal instead of just the number
+     // allows you to see error in terminal instead of just the number
      console.log(err);
      res.status(500).json(err);
   }
@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
     })
     res.status(200).json(categoryData);
   } catch (err) {
-     //allows you to see error in terminal instead of just the number
+     // allows you to see error in terminal instead of just the number
      console.log(err);
      res.status(500).json(err);
   }
