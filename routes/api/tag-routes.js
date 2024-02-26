@@ -48,9 +48,28 @@ router.post('/', async (req, res) => {
   }
 });
 
+// update a tag's name by its `id` value
 router.put('/:id', (req, res) => {
-  // update a tag's name by its `id` value
-});
+    Tag.update(
+      {
+        // all the fields to update
+        tag_name: req.body.tag_name
+      },
+      {
+        // gets a category
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then((updatedTag) => {
+        res.json(updatedTag);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
+      });
+  });
 
 // delete tag by id
 router.delete('/:id', async (req, res) => {

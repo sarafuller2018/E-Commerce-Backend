@@ -49,12 +49,30 @@ router.post('/', async (req, res) => {
   }
 });
 
+// update a category by its `id` value
 router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+  Category.update(
+    {
+      // all the fields to update
+      category_name: req.body.category_name
+    },
+    {
+      // gets a category
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((updatedCategory) => {
+      res.json(updatedCategory);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json(err);
+    });
 });
 
-
-///help?
+// deletes category by id - help
 router.delete('/:id', async (req, res) => {
   try {
     const categoryData = await Category.destroy({

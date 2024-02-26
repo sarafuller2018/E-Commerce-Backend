@@ -14,10 +14,10 @@ app.use(routes);
 
 // sync sequelize models to the database, then turn on the server
 // .then is the same as async and await
-//sync mehtod first then the .then
-//connects to database through sequelize then it runs the port
-//false means do not delete database
-//true means connect to database but drops data in the database, this will make you start with nothing 
+// sync mehtod first then the .then
+// connects to database through sequelize then it runs the port
+// false means do not delete database
+// true means connect to database but drops data in the database, this will make you start with nothing 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}!`);
