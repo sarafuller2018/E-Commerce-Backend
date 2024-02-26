@@ -6,6 +6,8 @@ const seedProductTags = require('./product-tag-seeds');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
+  //drop data base and recreate the data, everytime you rerun the seed you want to recreate the data and rerun the seeds
+  //adds seeds from original 
   await sequelize.sync({ force: true });
   console.log('\n----- DATABASE SYNCED -----\n');
   await seedCategories();
